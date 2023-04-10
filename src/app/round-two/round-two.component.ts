@@ -8,6 +8,7 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import {MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
 import { Router } from '@angular/router';
+import { QuizServiceService } from '../quiz-service.service';
 @Component({
   selector: 'app-round-two',
   templateUrl: './round-two.component.html',
@@ -89,7 +90,7 @@ export class RoundTwoComponent implements OnInit {
   timer: any;
   correctAnswer=0
   wrongAnswer=0
-  constructor(public router: Router,private _bottomSheet: MatBottomSheet,public dialog: MatDialog,) {
+  constructor(public router: Router,private _bottomSheet: MatBottomSheet,public dialog: MatDialog,private quizService: QuizServiceService) {
     this.timerr(1);
    }
 
@@ -118,6 +119,7 @@ this.displayQuestion()
     this.isVisible$.next(true);
     }
     else{
+      this.quizService.scoreRoundTwo.next(this.correctAnswer)
       this.router.navigate(['round-three']);
     }
   }
@@ -152,7 +154,7 @@ this.displayQuestion()
  }
  response(question: any,answer: any){
 
-  clearInterval(this.timer);
+  //clearInterval(this.timer);
   if(this.wrongAnswer<5){
   this.value= (this.count+1)/10*100;
   this.displayQuestion()

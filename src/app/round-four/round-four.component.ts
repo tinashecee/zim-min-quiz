@@ -8,6 +8,7 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import {MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
 import { Router } from '@angular/router';
+import { QuizServiceService } from '../quiz-service.service';
 @Component({
   selector: 'app-round-four',
   templateUrl: './round-four.component.html',
@@ -89,7 +90,7 @@ export class RoundFourComponent implements OnInit {
   timer: any;
   correctAnswer=0
   wrongAnswer=0
-  constructor(public router: Router,private _bottomSheet: MatBottomSheet,public dialog: MatDialog,) {
+  constructor(public router: Router,private _bottomSheet: MatBottomSheet,public dialog: MatDialog,private quizService: QuizServiceService) {
     this.timerr(1);
    }
 
@@ -118,7 +119,50 @@ this.displayQuestion()
     this.isVisible$.next(true);
     }
     else{
-      this.router.navigate(['round-three']);
+      let firstRound = 0
+      let secondRound = 0
+      let thirdRound = 0
+      let fourRound = 0
+      let total = 0
+      this.quizService.scoreRoundFour.next(this.correctAnswer)
+      this.quizService.scoreOne.subscribe(a=>{
+        firstRound = a
+        this.quizService.scoreTwo.subscribe(b=>{
+          secondRound = b
+          this.quizService.scoreThree.subscribe(c=>{
+            thirdRound = c
+            this.quizService.scoreFour.subscribe(d=>{
+              fourRound = d
+              total=firstRound+secondRound+thirdRound+fourRound
+              let usersArray:any = JSON.parse(this.quizService.getData("users")+"") ;
+              let currentUser=this.quizService.getData("currentUser")
+              let count = 0
+              let position = 1
+              usersArray.forEach((e: { name: string; score: number})=>{
+                  if(e.name == currentUser){
+                    usersArray[count]={name:currentUser,score:total}
+                  }
+                  count+=1
+              })
+              this.quizService.saveData("users", JSON.stringify(usersArray))
+              usersArray.forEach((e: { name: string; score: number})=>{
+                if(e.score > total){
+                  position+=1
+                }
+            })
+              const dialogRef = this.dialog.open(TimeoutDialogRoundFour,{
+                data: {
+                  name: currentUser,
+                  score: total/40*100,
+                  position:position
+                }});
+              this.router.navigate(['round-three']);
+            })
+
+          })
+        })
+      })
+
     }
   }
   expression = 'blue'
@@ -152,7 +196,7 @@ this.displayQuestion()
  }
  response(question: any,answer: any){
 
-  clearInterval(this.timer);
+  //clearInterval(this.timer);
   if(this.wrongAnswer<5){
   this.value= (this.count+1)/10*100;
   this.displayQuestion()
@@ -190,6 +234,18 @@ this.displayQuestion()
   templateUrl: 'timeout-dialog-round-four.html',
 })
 export class TimeoutDialogRoundFour {
+  constructor(public router: Router, @Inject(MAT_DIALOG_DATA) public data:{errorType:string, errorDescription:string}){
+  }
+  cancel(){
+    this.router.navigate(['']);
+  }
+
+}
+@Component({
+  selector: 'victory-dialog',
+  templateUrl: 'victory-dialog.html',
+})
+export class VictoryDialog {
   constructor(public router: Router, @Inject(MAT_DIALOG_DATA) public data:{errorType:string, errorDescription:string}){
   }
   cancel(){
