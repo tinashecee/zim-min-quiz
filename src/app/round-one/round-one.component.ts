@@ -119,6 +119,7 @@ this.displayQuestion()
     }
     else{
       this.quizService.scoreRoundOne.next(this.correctAnswer)
+      clearInterval(this.timer);
       this.router.navigate(['round-two']);
     }
   }
@@ -143,7 +144,7 @@ this.displayQuestion()
 
       if (this.seconds == 0) {
         console.log("finished");
-        this.timeoutDialog("Your time has run out!","You failed to answer your question in 60 seconds, therefore you are disqualified")
+        this.timeoutDialog("Your time has run out!","You failed to answer your question in 90 seconds, therefore you are disqualified")
         clearInterval(this.timer);
       }
     }, 1000);
@@ -170,7 +171,7 @@ this.displayQuestion()
     }
   })
 }else{
-   this.timeoutDialog("You have Failed to Qualify for the next round","You have failled to answer the necessary questions to proceed to the next round")
+   this.timeoutDialog("You have Failed to Qualify for the next round","You have failed to answer the necessary questions to proceed to the next round")
 }
 
  }

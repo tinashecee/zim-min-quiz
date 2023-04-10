@@ -120,6 +120,7 @@ this.displayQuestion()
     }
     else{
       this.quizService.scoreRoundTwo.next(this.correctAnswer)
+      clearInterval(this.timer);
       this.router.navigate(['round-three']);
     }
   }

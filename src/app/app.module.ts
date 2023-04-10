@@ -19,7 +19,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { BottomSheetRoundTwo, RoundTwoComponent, TimeoutDialogRoundTwo } from './round-two/round-two.component';
 import { BottomSheetRoundThree, RoundThreeComponent, TimeoutDialogRoundThree } from './round-three/round-three.component';
-import { BottomSheetRoundFour, RoundFourComponent, TimeoutDialogRoundFour } from './round-four/round-four.component';
+import { BottomSheetRoundFour, RoundFourComponent, TimeoutDialogRoundFour, VictoryDialog } from './round-four/round-four.component';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import {MatListModule} from '@angular/material/list';
@@ -45,7 +45,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     RoundFourComponent,
     LeaderBoardComponent,
     SplashScreenComponent,
-    UserDetailsDialog
+    UserDetailsDialog,
+    VictoryDialog
 
   ],
 

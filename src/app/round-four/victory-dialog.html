@@ -1,0 +1,11 @@
+<div style="width:600px;height:600px">
+<h2 mat-dialog-title>Congratulations {{data.name}}</h2>
+<mat-dialog-content class="mat-typography">
+  <h1> You are in came {{data.position}}</h1>
+  <br/>
+  <h3>With a score of {{data.score}}</h3>
+  </mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+</div>

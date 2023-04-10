@@ -150,13 +150,14 @@ this.displayQuestion()
                   position+=1
                 }
             })
-              const dialogRef = this.dialog.open(TimeoutDialogRoundFour,{
+              const dialogRef = this.dialog.open(VictoryDialog,{
                 data: {
                   name: currentUser,
-                  score: total/40*100,
+                  score: Math.round((total/40*100) * 10) / 10,
                   position:position
                 }});
-              this.router.navigate(['round-three']);
+                clearInterval(this.timer);
+              this.router.navigate(['leader-board']);
             })
 
           })
@@ -186,7 +187,7 @@ this.displayQuestion()
 
       if (this.seconds == 0) {
         console.log("finished");
-        this.timeoutDialog("Your time has run out!","You failed to answer your question in 60 seconds, therefore you are disqualified")
+        this.timeoutDialog("Your time has run out!","You failed to answer your question in 90 seconds, therefore you are disqualified")
         clearInterval(this.timer);
       }
     }, 1000);
@@ -246,10 +247,10 @@ export class TimeoutDialogRoundFour {
   templateUrl: 'victory-dialog.html',
 })
 export class VictoryDialog {
-  constructor(public router: Router, @Inject(MAT_DIALOG_DATA) public data:{errorType:string, errorDescription:string}){
+  constructor(public router: Router, @Inject(MAT_DIALOG_DATA) public data:{name:string, score:number, position:number}){
   }
   cancel(){
-    this.router.navigate(['']);
+    this.router.navigate(['/leader-board']);
   }
 
 }
