@@ -1,0 +1,39 @@
+.example-card {
+  margin: 30px auto;
+  width: 90%;
+}
+.example-card-one {
+  margin-top: 10px;
+  width: 100px;
+  position: absolute;
+  top:60px;
+  left:90%;
+}
+.main-div{
+  padding: 60px auto;
+  margin: 60px auto;
+  width:60%;
+}
+.question-div{}
+.answer{padding: 10px;margin: 10px;align-items: center;width: 100%;
+}
+button.mat-raised-button:hover {
+  background-color: 'blue';
+}
+
+
+.answer:hover,
+.answer:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+.round-chip{
+  margin-top: 10px;
+  width: 100px;
+  position: absolute;
+  top:60px;
+  left:5%;
+}
+.encaps{
+  width: 100%;
+}

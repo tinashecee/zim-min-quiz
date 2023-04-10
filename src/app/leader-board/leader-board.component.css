@@ -1,0 +1,20 @@
+.back-button{
+position: absolute;
+left: 30px;
+}
+.title{
+  align-items: center;
+
+}
+.nav-area{
+  width: 100%;
+}
+.center-div{
+  width:60%;
+  padding: auto;
+  margin: auto;
+}
+mat-list-item{
+  width: 100%;
+  background-color: aqua;
+}

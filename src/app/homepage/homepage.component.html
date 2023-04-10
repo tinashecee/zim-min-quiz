@@ -1,0 +1,22 @@
+<mat-grid-list cols="2" rowHeight="100%">
+  <mat-grid-tile ><div class="background">
+
+  </div></mat-grid-tile>
+  <mat-grid-tile><div style="background-color:#fbf7f4;width:100%;height:100%">
+
+     <h1 style="padding: 20px;margin: 20px;font-size: 48px;">
+       Zim Minerals Quiz Game
+     </h1>
+     <br/>
+     <div class="main-div">
+        <button mat-raised-button   class="answer"><img src="../../assets/clapperboard.png"><h1 style="font-size: large;">Watch Video</h1> </button>
+        <br/>
+        <button mat-raised-button routerLink="/leader-board" class="answer"><img src="../../assets/podium.png"><h1 style="font-size: large;">Leaderboard</h1></button>
+        <br/>
+        <button mat-raised-button (click)="openDialog()" class="answer"><img src="../../assets/play.png"><h1 style="font-size: large;">Start Game</h1> </button>
+        <br/>
+    </div>
+  </div></mat-grid-tile>
+</mat-grid-list>
+
+

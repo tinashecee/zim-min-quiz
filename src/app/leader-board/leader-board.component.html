@@ -1,0 +1,23 @@
+<div>
+  <div class="nav-area">
+    <mat-grid-list cols="3" rowHeight="100px" class="nav-area">
+      <mat-grid-tile >
+    <button  class="back-button" routerLink="/" mat-raised-button>Back</button>
+  </mat-grid-tile>
+  <mat-grid-tile>
+   <h1 class="title">Leader Board</h1>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
+  </div>
+</div>
+<div class="center-div">
+<mat-list>
+  <mat-list-item *ngFor="let elem of usersArray">
+    <img matListItemAvatar src="../../assets/top.png" alt="...">
+    <h3 matListItemTitle>{{elem.name}}</h3>
+    <p matListItemLine style="position: relative;left:80%"> {{elem.score}}</p>
+
+  </mat-list-item>
+</mat-list>
+</div>
