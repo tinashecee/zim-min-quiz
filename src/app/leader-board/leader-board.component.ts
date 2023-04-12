@@ -11,7 +11,20 @@ export class LeaderBoardComponent implements OnInit {
   constructor(private quizService: QuizServiceService) { }
 
   ngOnInit(): void {
-    this.usersArray= JSON.parse(this.quizService.getData("users")+"") ;
+   let a= JSON.parse(this.quizService.getData("users")+"") ;
+    this.usersArray=a.sort( this.compare );
   }
+
+  compare( a:any, b:any ) {
+    if ( a.score < b.score ){
+      return 1;
+    }
+    if ( a.score > b.score ){
+      return -1;
+    }
+    return 0;
+  }
+
+
 
 }

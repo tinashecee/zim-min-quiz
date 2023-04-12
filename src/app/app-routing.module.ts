@@ -7,12 +7,14 @@ import { RoundThreeComponent } from './round-three/round-three.component';
 import { RoundTwoComponent } from './round-two/round-two.component';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
 
-const routes: Routes = [{ path: '', component: HomepageComponent},
-{ path: 'round-one', component: RoundOneComponent, data: { animation: 'isLeft' }},
-{ path: 'round-two', component: RoundTwoComponent, data: { animation: 'isLeft' }},
-{ path: 'round-three', component: RoundThreeComponent, data: { animation: 'isLeft' }},
-{ path: 'round-four', component: RoundFourComponent, data: { animation: 'isLeft' }},
-{ path: 'leader-board', component: LeaderBoardComponent, data: { animation: 'isLeft' }}];
+const routes: Routes = [
+  { path: '', redirectTo:  'home', pathMatch:  'full'  },
+  { path: 'home', component: HomepageComponent,data: {state:  'home'} },
+{ path: 'round-one', component: RoundOneComponent,data: {state:  'round-one'} },
+{ path: 'round-two', component: RoundTwoComponent,data: {state:  'round-two'} },
+{ path: 'round-three', component: RoundThreeComponent,data: {state:  'round-three'} },
+{ path: 'round-four', component: RoundFourComponent, data: {state:  'round-four'} },
+{ path: 'leader-board', component: LeaderBoardComponent,data: {state:  'leader-board'} },];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

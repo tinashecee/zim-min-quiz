@@ -1,4 +1,7 @@
 <app-splash-screen></app-splash-screen>
-<div [@routeAnimations]="prepareRoute(outlet)" >
-  <router-outlet #outlet="outlet"></router-outlet>
+<div
+	class="router-wrapper"
+	[@rotateCubeToLeft]="getState(o)"
+	>
+	<router-outlet #o="outlet">  </router-outlet>
 </div>

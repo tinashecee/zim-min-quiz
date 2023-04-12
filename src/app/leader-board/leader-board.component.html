@@ -13,10 +13,11 @@
 </div>
 <div class="center-div">
 <mat-list>
-  <mat-list-item *ngFor="let elem of usersArray">
+  <mat-list-item style="padding: 10px;margin: 10px;" *ngFor="let elem of usersArray;let i = index">
+    <h1 matListItemTitle>{{i+1}}</h1>
     <img matListItemAvatar src="../../assets/top.png" alt="...">
     <h3 matListItemTitle>{{elem.name}}</h3>
-    <p matListItemLine style="position: relative;left:80%"> {{elem.score}}</p>
+    <p matListItemLine style="position: absolute;left:80%"> {{elem.score/40*100}}%</p>
 
   </mat-list-item>
 </mat-list>
