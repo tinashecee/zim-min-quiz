@@ -7,15 +7,18 @@ import { QuizServiceService } from '../quiz-service.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
+ animateButton: any;
+ bubblyButtons: any;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(UserDetailsDialog);
   }
+
 
 }
 
@@ -33,6 +36,8 @@ export class QuizStartDialog {
 })
 export class UserDetailsDialog {
   userName = "";
+  age=0
+  gender="";
   constructor(public dialog: MatDialog, private quizService: QuizServiceService) { }
   openDialog1() {
     let userExists=false;
@@ -47,7 +52,7 @@ export class UserDetailsDialog {
        this.quizService.openSnackBar()
      }
      else{
-        usersArray.push({name:this.userName,score:0})
+        usersArray.push({name:this.userName,score:0, age:this.age,gender:this.gender })
         this.quizService.saveData("users", JSON.stringify(usersArray))
         const dialogRef = this.dialog.open(QuizStartDialog);
         this.quizService.saveData("currentUser",this.userName)
@@ -58,4 +63,5 @@ export class UserDetailsDialog {
     }
 
   }
+
 }

@@ -1,22 +1,56 @@
-<mat-grid-list cols="2" rowHeight="100%">
-  <mat-grid-tile ><div class="background">
+<mat-grid-list cols="4" rowHeight="100%">
+  <mat-grid-tile style="background-image: url(../../assets/bdimage.png);"></mat-grid-tile>
+  <mat-grid-tile colspan="2"><div style="background-color:#fbf7f4;width:100%;height:100%">
 
-  </div></mat-grid-tile>
-  <mat-grid-tile><div style="background-color:#fbf7f4;width:100%;height:100%">
-
-     <h1 style="padding: 20px;margin: 20px;font-size: 48px;">
-       Zim Minerals Quiz Game
-     </h1>
-     <br/>
+     <div class="logo">
+      <h1 style="font-family: 'Sorts Mill Goudy', serif;font-size: 48px;text-align: center;margin: auto;padding: auto;">
+      Zim Minerals Quiz
+    </h1>
+     </div>
      <div class="main-div">
-        <button mat-raised-button   class="answer"><img src="../../assets/clapperboard.png"><h1 style="font-size: large;">Watch Video</h1> </button>
+        <button mat-raised-button   class="answer"><img src="../../assets/clapperboard.png">
+          <div class="container">
+            <span data-title="Play Video" class="text">
+              Play Video
+            </span>
+          </div>
+        </button>
         <br/>
-        <button mat-raised-button routerLink="/leader-board" class="answer"><img src="../../assets/podium.png"><h1 style="font-size: large;">Leaderboard</h1></button>
+        <button mat-raised-button routerLink="/leader-board" class="answer"><img src="../../assets/podium.png">
+          <div class="waviy">
+            <span style="--i:1">L</span>
+            <span style="--i:2">e</span>
+            <span style="--i:3">a</span>
+            <span style="--i:4">d</span>
+            <span style="--i:5">e</span>
+            <span style="--i:6">r</span>
+            <span style="--i:7">b</span>
+            <span style="--i:8">o</span>
+            <span style="--i:9">a</span>
+            <span style="--i:10">r</span>
+            <span style="--i:11">d</span>
+           </div>
+        </button>
         <br/>
-        <button mat-raised-button (click)="openDialog()" class="answer"><img src="../../assets/play.png"><h1 style="font-size: large;">Start Game</h1> </button>
+        <button mat-raised-button (click)="openDialog()" class="answer"><img src="../../assets/play.png"><svg viewBox="0 0 960 300">
+          <symbol id="s-text">
+            <text text-anchor="middle" x="50%" y="80%">Start Game </text>
+
+          </symbol>
+
+          <g class = "g-ants">
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+          </g>
+        </svg> </button>
         <br/>
     </div>
   </div></mat-grid-tile>
+    <mat-grid-tile style="background-image: url(../../assets/bdimage.png);">
+  </mat-grid-tile>
 </mat-grid-list>
 
 

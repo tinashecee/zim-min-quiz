@@ -2,7 +2,7 @@
 	position:  relative;
 	overflow:  hidden;
 	width:  100vw;
-	height:  calc(100%  -  47px);
+	height:  100vh;
 	perspective:  1200px;
 	transform-style:  preserve-3d;
 }

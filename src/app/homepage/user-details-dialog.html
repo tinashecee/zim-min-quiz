@@ -3,14 +3,26 @@
 <mat-dialog-content class="mat-typography">
   <form style=" width: 100%;">
     <mat-form-field style=" width: 100%;">
-      <mat-label>Enter name</mat-label>
-      <input matInput placeholder="John Doe"  [(ngModel)]="userName" name="userName">
+      <mat-label>Enter your name</mat-label>
+      <input matInput placeholder="John Doe" required  [(ngModel)]="userName" name="userName">
     </mat-form-field>
-
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>Your Gender</mat-label>
+      <mat-select [(ngModel)]="gender" name="gender" required>
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field style=" width: 100%;">
+      <mat-label>Your Age</mat-label>
+      <input matInput  type="number" [(ngModel)]="age" name="age" required>
+    </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [disabled]="userName === ''" (click)="openDialog1()" mat-dialog-close>Save</button>
+  <button mat-raised-button color="primary" [disabled]="userName === '' || age === 0 || gender === ''" (click)="openDialog1()" mat-dialog-close>Save</button>
 </mat-dialog-actions>
 </div>

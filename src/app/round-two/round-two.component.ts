@@ -172,7 +172,8 @@ this.displayQuestion()
     }
   })
 }else{
-
+  clearInterval(this.timer);
+  this.timeoutDialog("You have Failed to Qualify for the next round","You have failed to answer the necessary questions to proceed to the next round")
 }
 
  }
@@ -196,7 +197,7 @@ export class TimeoutDialogRoundTwo {
   constructor(public router: Router, @Inject(MAT_DIALOG_DATA) public data:{errorType:string, errorDescription:string}){
   }
   cancel(){
-    this.router.navigate(['']);
+    this.router.navigate(['leader-board']);
   }
 
 }

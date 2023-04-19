@@ -36,7 +36,8 @@
      <h1 >{{questions[questionNumber].Question}}?</h1>
     </div>
     <div class="answers">
-      <button mat-raised-button  (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[0])" class="answer">{{questions[questionNumber].Answers[0]}}</button>
+      <button  mat-raised-button (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[0])">{{questions[questionNumber].Answers[0]}}</button>
+     <!--<button mat-raised-button  (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[0])" class="answer">{{questions[questionNumber].Answers[0]}}</button>-->
       <br/>
       <button mat-raised-button (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[1])" class="answer">{{questions[questionNumber].Answers[1]}}</button>
       <br/>

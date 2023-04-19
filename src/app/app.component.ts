@@ -13,7 +13,10 @@ import  {rotateCubeToLeft,rotateFlipToTop,rotateGlueFromLeft,rotateGlueFromRight
   transition('round-one => round-two', useAnimation(slide)),
   transition('round-two => round-three', useAnimation(slide)),
   transition('round-three => round-four', useAnimation(slide)),
-  transition('round-four => leader-board', useAnimation(rotateRoomToTop))
+  transition('round-four => leader-board', useAnimation(rotateRoomToTop)),
+  transition('round-one => leader-board', useAnimation(rotateRoomToTop)),
+  transition('round-two => leader-board', useAnimation(rotateRoomToTop)),
+  transition('round-three => leader-board', useAnimation(rotateRoomToTop)),
 ])
 
   ]
