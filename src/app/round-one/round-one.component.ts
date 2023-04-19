@@ -15,7 +15,7 @@ import { QuizServiceService } from '../quiz-service.service';
 })
 export class RoundOneComponent implements OnInit {
   colorAnswer = "accent";
-  color: ThemePalette = 'primary';
+  color: ThemePalette = 'accent';
   mode: ProgressBarMode = 'determinate';
   value = 0;
   bufferValue = 75;

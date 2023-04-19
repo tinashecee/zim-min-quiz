@@ -9,12 +9,18 @@ import { QuizServiceService } from '../quiz-service.service';
 export class HomepageComponent implements OnInit {
  animateButton: any;
  bubblyButtons: any;
+ btn:any = document.getElementById("base");
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
+    //this.btn.addEventListener("mousedown", );
+    //this.btn.addEventListener("mouseup", onBtnUp);
   }
-
+   clickBtn(){
+    console.log("gh")
+    onBtnUp
+   }
   openDialog() {
     const dialogRef = this.dialog.open(UserDetailsDialog);
   }
@@ -65,3 +71,11 @@ export class UserDetailsDialog {
   }
 
 }
+function onBtnUp(this: HTMLElement, ev: MouseEvent) {
+  throw new Error('Function not implemented.');
+}
+
+function onBtnDown(this: HTMLElement, ev: MouseEvent) {
+  throw new Error('Function not implemented.');
+}
+
