@@ -24,7 +24,7 @@ border: 2px solid gold;width:60px;">
   <mat-progress-spinner
       [diameter]="60"
       class="example-margin"
-      [color]="color"
+      color="primary"
       [mode]="mode1"
       [value]="value1">
   </mat-progress-spinner>
@@ -41,16 +41,38 @@ border: 2px solid gold;width:60px;">
         <div class="main-div" >
 
           <div class="answers">
-            <button  mat-raised-button  (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[0])">{{questions[questionNumber].Answers[0]}}</button>
-           <!--<button mat-raised-button  (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[0])" class="answer">{{questions[questionNumber].Answers[0]}}</button>-->
+            <a (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[0])" class="animated-button1">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              {{questions[questionNumber].Answers[0]}}
+            </a>           <!--<button mat-raised-button  (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[0])" class="answer">{{questions[questionNumber].Answers[0]}}</button>-->
             <br/>
-            <button mat-raised-button (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[1])" class="answer">{{questions[questionNumber].Answers[1]}}</button>
-            <br/>
-            <button mat-raised-button (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[2])" class="answer">{{questions[questionNumber].Answers[2]}}</button>
-            <br/>
-            <button mat-raised-button (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[3])" class="answer">{{questions[questionNumber].Answers[3]}}</button>
-            <br/>
+            <a (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[1])" class="animated-button1">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              {{questions[questionNumber].Answers[1]}}
+            </a>            <br/>
+            <a (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[2])" class="animated-button1">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              {{questions[questionNumber].Answers[2]}}
+            </a>            <br/>
+            <a (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[3])" class="animated-button1">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              {{questions[questionNumber].Answers[3]}}
+            </a>            <br/>
+
           </div>
+
         </div>
         <mat-divider></mat-divider>
       </mat-card-content>

@@ -89,6 +89,7 @@ export class RoundOneComponent implements OnInit {
   timer: any;
   correctAnswer=0
   wrongAnswer=0
+ audio = new Audio();
   constructor(public router: Router,private _bottomSheet: MatBottomSheet,public dialog: MatDialog,private quizService: QuizServiceService) {
     this.timerr(1);
    }
@@ -96,6 +97,16 @@ export class RoundOneComponent implements OnInit {
   ngOnInit(): void {
 
     this.randomIntFromInterval()
+    this.playAudio();
+  }
+  playAudio(){
+
+    this.audio.src = "../../assets/clock-ticking-60-second-countdown-118231.mp3";
+    this.audio.load();
+    this.audio.play();
+  }
+  stopAudio(){
+   this.audio.pause()
   }
   randomIntFromInterval() { // min and max included
     var nums = [0,1,2,3,4,5,6,7,8,9],
@@ -121,6 +132,7 @@ this.displayQuestion()
     else{
       this.quizService.scoreRoundOne.next(this.correctAnswer)
       clearInterval(this.timer);
+      this.stopAudio()
       this.router.navigate(['round-two']);
     }
   }
@@ -192,6 +204,7 @@ this.displayQuestion()
 @Component({
   selector: 'timeout-dialog',
   templateUrl: 'timeout-dialog.html',
+  styleUrls: ['./round-one.component.css']
 })
 export class TimeoutDialog {
   constructor(public router: Router, @Inject(MAT_DIALOG_DATA) public data:{errorType:string, errorDescription:string}){
@@ -206,6 +219,8 @@ export class TimeoutDialog {
 @Component({
   selector: 'bottom-sheet',
   templateUrl: 'bottom-sheet.html',
+  styleUrls: ['./round-one.component.css']
+
 })
 export class BottomSheetRoundOne {
   constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetRoundOne>,@Inject(MAT_BOTTOM_SHEET_DATA) public data: {question: string,answer:string}) {}

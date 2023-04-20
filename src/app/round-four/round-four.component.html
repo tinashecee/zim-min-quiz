@@ -1,49 +1,84 @@
-<div class="example-card">
+<div style="background-image: url(../../assets/bgdia.png);height:100%;width:100%">
+  <div class="example-card-1">
 
 
-  <section class="example-section">
-    <mat-progress-bar
+      <section class="example-section">
+        <mat-progress-bar
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="value"
+            [bufferValue]="bufferValue">
+        </mat-progress-bar>
+      </section>
+    </div>
+
+    <div class="round-chip">
+      <mat-chip-list>
+        <mat-chip color="accent" selected>ROUND 1</mat-chip>
+      </mat-chip-list>
+    </div>
+  <div class="example-card-one" style="background-color: aliceblue;border-radius: 25px;
+  border: 2px solid gold;width:60px;">
+   <div style="position: absolute; left:20px;top:20px"><p [style.color]="expression" style="font-size: 16px;font-weight: bold;" >{{display}}</p></div>
+    <mat-progress-spinner
+        [diameter]="60"
         class="example-margin"
-        [color]="color"
-        [mode]="mode"
-        [value]="value"
-        [bufferValue]="bufferValue">
-    </mat-progress-bar>
-  </section>
-</div>
+        color="primary"
+        [mode]="mode1"
+        [value]="value1">
+    </mat-progress-spinner>
 
-<div class="round-chip">
-  <mat-chip-list>
-    <mat-chip color="warn" selected>Round 4</mat-chip>
-  </mat-chip-list>
-</div>
-<div class="example-card-one">
-<div style="position: absolute; left:20px;top:20px"><p [style.color]="expression" style="font-size: 16px;font-weight: bold;" >{{display}}</p></div>
-<mat-progress-spinner
-    [diameter]="60"
-    class="example-margin"
-    [color]="color"
-    [mode]="mode1"
-    [value]="value1">
-</mat-progress-spinner>
+    </div>
 
-</div>
+    <br/>
+    <ng-container *ngIf="isVisible$ | async" >
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title style="text-align: center;"><h1 >{{questions[questionNumber].Question}}?</h1></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="main-div" >
 
-<br/>
-<ng-container *ngIf="isVisible$ | async">
-<div class="main-div">
-  <div class="question-div">
-   <h1 >{{questions[questionNumber].Question}}?</h1>
+            <div class="answers">
+              <a (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[0])" class="animated-button1">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                {{questions[questionNumber].Answers[0]}}
+              </a>           <!--<button mat-raised-button  (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[0])" class="answer">{{questions[questionNumber].Answers[0]}}</button>-->
+              <br/>
+              <a (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[1])" class="animated-button1">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                {{questions[questionNumber].Answers[1]}}
+              </a>            <br/>
+              <a (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[2])" class="animated-button1">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                {{questions[questionNumber].Answers[2]}}
+              </a>            <br/>
+              <a (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[3])" class="animated-button1">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                {{questions[questionNumber].Answers[3]}}
+              </a>            <br/>
+
+            </div>
+
+          </div>
+          <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+
+  </ng-container>
   </div>
-  <div class="answers">
-    <button mat-raised-button  (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[0])" class="answer">{{questions[questionNumber].Answers[0]}}</button>
-    <br/>
-    <button mat-raised-button (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[1])" class="answer">{{questions[questionNumber].Answers[1]}}</button>
-    <br/>
-    <button mat-raised-button (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[2])" class="answer">{{questions[questionNumber].Answers[2]}}</button>
-    <br/>
-    <button mat-raised-button (click)="response(questions[questionNumber].Question,questions[questionNumber].Answers[3])" class="answer">{{questions[questionNumber].Answers[3]}}</button>
-    <br/>
-  </div>
-</div>
-</ng-container>

@@ -1,5 +1,15 @@
-<h1>Incorrect Answer</h1>
-<p>{{data.question}}</p>
-<br/>
-<p>{{data.answer}}</p>
 
+
+<mat-card class="example-card-2">
+  <mat-card-header>
+    <mat-card-subtitle><h2 style="color: red;font-size: 14px;">Correct Answer</h2></mat-card-subtitle>
+    <mat-card-title><h2 style="font-size: 14px;">{{data.question}}</h2></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+   <h2 style="color: black;font-size: 24px;">{{data.answer}}</h2>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-progress-bar color="warn" mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

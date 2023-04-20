@@ -90,6 +90,7 @@ export class RoundTwoComponent implements OnInit {
   timer: any;
   correctAnswer=0
   wrongAnswer=0
+  audio = new Audio();
   constructor(public router: Router,private _bottomSheet: MatBottomSheet,public dialog: MatDialog,private quizService: QuizServiceService) {
     this.timerr(1);
    }
@@ -97,6 +98,16 @@ export class RoundTwoComponent implements OnInit {
   ngOnInit(): void {
 
     this.randomIntFromInterval()
+    this.playAudio();
+  }
+  playAudio(){
+
+    this.audio.src = "../../assets/clock-ticking-60-second-countdown-118231.mp3";
+    this.audio.load();
+    this.audio.play();
+  }
+  stopAudio(){
+   this.audio.pause()
   }
   randomIntFromInterval() { // min and max included
     var nums = [0,1,2,3,4,5,6,7,8,9],
@@ -121,6 +132,7 @@ this.displayQuestion()
     else{
       this.quizService.scoreRoundTwo.next(this.correctAnswer)
       clearInterval(this.timer);
+      this.stopAudio()
       this.router.navigate(['round-three']);
     }
   }
