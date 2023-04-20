@@ -90,6 +90,8 @@ export class RoundOneComponent implements OnInit {
   correctAnswer=0
   wrongAnswer=0
  audio = new Audio();
+ correctAudio = new Audio();
+ incorrectAudio = new Audio();
   constructor(public router: Router,private _bottomSheet: MatBottomSheet,public dialog: MatDialog,private quizService: QuizServiceService) {
     this.timerr(1);
    }
@@ -104,6 +106,18 @@ export class RoundOneComponent implements OnInit {
     this.audio.src = "../../assets/clock-ticking-60-second-countdown-118231.mp3";
     this.audio.load();
     this.audio.play();
+  }
+  playCorrectAudio(){
+
+    this.correctAudio.src = "../../assets/correct-6033.mp3";
+    this.correctAudio.load();
+    this.correctAudio.play();
+  }
+  playErrorAudio(){
+
+    this.incorrectAudio.src = "../../assets/wrong-answer-126515.mp3";
+    this.incorrectAudio.load();
+    this.incorrectAudio.play();
   }
   stopAudio(){
    this.audio.pause()
@@ -156,7 +170,7 @@ this.displayQuestion()
       this.display = `${this.textSec}`;
 
       if (this.seconds == 0) {
-        console.log("finished");
+        this.playErrorAudio()
         this.timeoutDialog("Your time has run out!","You failed to answer your question in 90 seconds, therefore you are disqualified")
         clearInterval(this.timer);
       }
@@ -175,8 +189,10 @@ this.displayQuestion()
     if(e.Question == question){
       if(e.Answer==answer){
        this.correctAnswer+=1
+       this.playCorrectAudio()
       }
       else{
+        this.playErrorAudio()
         this.wrongAnswer+=1
         this._bottomSheet.open(BottomSheetRoundOne, {
           data: { question: e.Question,answer: e.Answer},});
@@ -184,6 +200,7 @@ this.displayQuestion()
     }
   })
 }else{
+  this.playErrorAudio()
   clearInterval(this.timer);
    this.timeoutDialog("You have Failed to Qualify for the next round","You have failed to answer the necessary questions to proceed to the next round")
 }
