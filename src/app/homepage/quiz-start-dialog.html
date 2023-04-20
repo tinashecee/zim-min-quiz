@@ -1,5 +1,5 @@
-<h1 mat-dialog-title>Zim Minerals Quiz Rules</h1>
-<mat-dialog-content class="mat-typography">
+
+<form style="width: 900px;">
   <h3>Rule 1</h3>
   <p>The quiz game consists of 4 rounds with 10 questions per round</p>
 
@@ -10,9 +10,13 @@
   <p>If you fail to advance to the next round you are eliminated </p>
 
   <h3>Rule 4</h3>
-  <p>You are given only 60 seconds to answer each question in the rounds. If the time runs out you will automatically be disqualified from the quiz game.</p>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button routerLink="/round-one" mat-dialog-close>Play</button>
-</mat-dialog-actions>
+  <p>You are given only 100 seconds to answer each question in the rounds. If the time runs out you will automatically be disqualified from the quiz game.</p>
+
+  <button  class="buton" routerLink="/round-one" mat-dialog-close>Play</button>
+  <button style=" margin-top: 10px;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 14px;
+  font-weight: 300;
+  border-radius: 5px;" mat-button color="warn" mat-dialog-close>Cancel</button>
+  </form>

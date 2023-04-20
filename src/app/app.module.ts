@@ -24,7 +24,7 @@ import { LeaderBoardComponent } from './leader-board/leader-board.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 @NgModule({
@@ -68,6 +68,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatListModule,
     MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
     MatSnackBarModule,
     MatSelectModule,
 

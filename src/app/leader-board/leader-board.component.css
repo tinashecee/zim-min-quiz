@@ -21,6 +21,8 @@ mat-list-item{
 }
 .example-card {
   max-width: 900px;
+  height: 600px;
+  overflow-y: scroll;
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
   font-size: 24px;
@@ -32,8 +34,9 @@ mat-list-item{
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 .leaderboard {
-  max-width: 490px;
-  width: 100%;
+  width: 80%;
+  padding: auto;
+  margin: auto;
   border-radius: 12px;
 }
 .leaderboard header {

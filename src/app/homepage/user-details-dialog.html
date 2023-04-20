@@ -1,28 +1,41 @@
-<div style="width: 600px;">
-<h1 mat-dialog-title>Enter your Name</h1>
-<mat-dialog-content class="mat-typography">
-  <form style=" width: 100%;">
-    <mat-form-field style=" width: 100%;">
-      <mat-label>Enter your name</mat-label>
-      <input matInput placeholder="John Doe" required  [(ngModel)]="userName" name="userName">
-    </mat-form-field>
-    <br/>
-    <mat-form-field appearance="fill">
-      <mat-label>Your Gender</mat-label>
-      <mat-select [(ngModel)]="gender" name="gender" required>
-        <mat-option value="male">Male</mat-option>
-        <mat-option value="female">Female</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br/>
-    <mat-form-field style=" width: 100%;">
-      <mat-label>Your Age</mat-label>
-      <input matInput  type="number" [(ngModel)]="age" name="age" required>
-    </mat-form-field>
-  </form>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [disabled]="userName === '' || age === 0 || gender === ''" (click)="openDialog1()" mat-dialog-close>Save</button>
-</mat-dialog-actions>
-</div>
+<form>
+  <h3>Login Here</h3>
+<!----
+  <label for="username">Enter Name</label>
+  <input type="text" placeholder="Email or Phone" id="username">
+
+  <label for="password">Gender</label>
+  <input type="password" placeholder="Password" id="gender">
+
+  <button>Log In</button> -->
+  <mat-form-field style=" width: 100%;">
+    <mat-label>Enter your name</mat-label>
+    <input matInput placeholder="John Doe" required  [(ngModel)]="userName" name="userName">
+  </mat-form-field>
+  <br/>
+  <mat-form-field appearance="fill">
+    <mat-label>Your Gender</mat-label>
+    <mat-select [(ngModel)]="gender" name="gender" required>
+      <mat-option value="male">Male</mat-option>
+      <mat-option value="female">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
+  <mat-form-field style=" width: 100%;">
+    <mat-label>Your Age Group</mat-label>
+    <mat-select  [(ngModel)]="age" name="age" required>
+      <mat-option value="18-30">18 - 30</mat-option>
+      <mat-option value="31-40">31 - 40</mat-option>
+      <mat-option value="41-60">41 - 60</mat-option>
+      <mat-option value="61+">61+</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button class="buton"  [disabled]="userName === '' || age === '' || gender === ''" (click)="openDialog1()" mat-dialog-close>Save</button>
+  <button style=" margin-top: 20px;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 14px;
+  font-weight: 300;
+  border-radius: 5px;" mat-button color="warn" mat-dialog-close>Cancel</button>
+</form>

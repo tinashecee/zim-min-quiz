@@ -31,6 +31,7 @@ export class HomepageComponent implements OnInit {
 @Component({
   selector: 'quiz-start-dialog',
   templateUrl: 'quiz-start-dialog.html',
+  styleUrls: ['./homepage.component.css']
 })
 export class QuizStartDialog {
 
@@ -39,11 +40,13 @@ export class QuizStartDialog {
 @Component({
   selector: 'user-details-dialog',
   templateUrl: 'user-details-dialog.html',
+  styleUrls: ['./homepage.component.css']
 })
 export class UserDetailsDialog {
   userName = "";
-  age=0
+  age=""
   gender="";
+  seasons: string[] = ['18 - 30', '31 - 40', '41 - 60', '61+'];
   constructor(public dialog: MatDialog, private quizService: QuizServiceService) { }
   openDialog1() {
     let userExists=false;
