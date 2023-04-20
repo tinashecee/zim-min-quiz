@@ -32,58 +32,70 @@ export class RoundFourComponent implements OnInit {
   questionNumber = 0
 
 
-  questions = [{Question: "What is a mineral",
-  Answers: ["A precious stone", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "What is the most expensive Mineral",
-  Answers: ["Mineral is a precious fossil", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "How many minerals exist in Zim",
-  Answers: ["Mineral is a precious fossil", "A cool rock","45",
-  "A rock used for rituals"]},
-  {Question: "Who is the largest supplier of Gold",
-  Answers: ["Mineral is a precious fossil", "A cool rock","A beautiful rock",
-  "Zimbabwe"]},
-   {Question: "What is Zimbabwe's biggest mineral export",
-  Answers: ["Mineral is a precious fossil", "Gold","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "What is mineral is most dangerous",
-  Answers: ["Uranium", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "How many mining towns are in Zimbabwe",
-  Answers: ["Mineral is a precious fossil", "A cool rock","14",
-  "A rock used for rituals"]},
-  {Question: "What is the Mining regulator in Zimbabwe",
-  Answers: ["Mineral is a precious fossil", "A cool rock","Zim Minerals",
-  "A rock used for rituals"]},
-  {Question: "What is the great dyke",
-  Answers: ["A belt rich in mining deposits", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "Which mineral is used to make batteries",
-  Answers: ["Lithium", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
+  questions = [
+    {
+      Question: "What mineral is commonly used in the production of jewellery?",
+      Answers: ["Gold", "Silver", "Platinum", "All of the above"]
+    },
+    {
+      Question: "Which of these minerals is commonly used in the production of glass?",
+      Answers: ["Quartz", "Feldspar", "Mica", "All of the above"]
+    },
+    {
+      Question: "What mineral is commonly used in the production of paint?",
+      Answers: ["Titanium", "Iron", "Aluminum", "Copper"]
+    },
+    {
+      Question: "Which mineral is used in the production of ceramic tiles?",
+      Answers: ["Clay", "Sand", "Feldspar", "All of the above"]
+    },
+    {
+      Question: "What mineral is used in the production of tombstones?",
+      Answers: ["Asbestos", "Calcium silicate", "Vermiculite", "Granite"]
+    },
+    {Question: "Which of these minerals is used in the production of wedding rings?",
+    Answers: ["Barite", "Celestite","Diamond",
+    "Zinc"]},
+    {Question: "Which mineral is commonly used in the production of pencils?",
+    Answers: ["Graphite", "Hematite","Magnetite",
+    "Pyrite"]},
+    {Question: "Which of these minerals is commonly used in the production of electrical wires and cables?",
+    Answers: ["Copper", "Aluminum","Silver",
+    "All of the above"]},
+    {Question: "What mineral is used to make optical lenses?",
+    Answers: ["Quartz", "Beryl","Fluorite",
+    "Halite"]},
+    {Question: "Which mineral is used to produce cutting tools?",
+    Answers: ["Cobalt", "Tungsten","Titanium",
+    "A rock used for rituals"]},
   ]
 
-  answers = [{Question: "What is a mineral",
-  Answer: "A precious stone"} ,
-  {Question: "How many minerals exist in Zim",
-  Answer: "45"},
-  {Question: "What is the most expensive Mineral",
-  Answer: "Platinum"},
-  {Question: "Who is the largest supplier of Gold",
-  Answer: "Zimbabwe"},
-  {Question: "What is Zimbabwe's biggest mineral export",
-  Answer: "Gold"},
-  {Question: "What is mineral is most dangerous",
-  Answer: "Uranium"},
-  {Question: "How many mining towns are in Zimbabwe",
-  Answer: "14"},
-  {Question: "What is the Mining regulator in Zimbabwe",
-  Answer: "Zim Minerals"},
-  {Question: "What is the great dyke",
-  Answer: "A belt rich in mining deposits"},
-  {Question: "Which mineral is used to make batteries",
-  Answer: "Lithium"}
+  answers = [
+    {
+      Question: "What mineral is commonly used in the production of jewellery?",  Answer: "All of the above"
+    },
+    {
+      Question: "Which of these minerals is commonly used in the production of glass?",  Answer: "All of the above"
+    },
+    {
+      Question: "What mineral is commonly used in the production of paint?",  Answer: "Titanium"
+    },
+    {
+      Question: "Which mineral is used in the production of ceramic tiles?",  Answer: "All of the above"
+    },
+    {
+      Question: "What mineral is used in the production of tombstones?",  Answer: "Granite"
+    },
+    {Question: "Which of these minerals is used in the production of wedding rings?",
+  Answer: "Diamond"},
+  {Question: "Which mineral is commonly used in the production of pencils?",
+  Answer: "Graphite"},
+  {Question: "Which of these minerals is commonly used in the production of electrical wires and cables?",
+  Answer: "All of the above"},
+  {Question: "What mineral is used to make optical lenses?",
+  Answer: "Fluorite"},
+  {Question: "Which mineral is used to produce cutting tools?",
+  Answer: "Tungsten"}
   ]
   ranNums :number[] = []
   count =0;
@@ -221,7 +233,7 @@ this.displayQuestion()
       this.display = `${this.textSec}`;
 
       if (this.seconds == 0) {
-
+        this.stopAudio()
         this.playErrorAudio()
         this.timeoutDialog("Your time has run out!","You failed to answer your question in 90 seconds, therefore you are disqualified")
         clearInterval(this.timer);
@@ -252,6 +264,7 @@ this.displayQuestion()
     }
   })
 }else{
+  this.stopAudio()
   this.playErrorAudio()
   clearInterval(this.timer);
   this.timeoutDialog("You have Failed to Qualify for the next round","You have failed to answer the necessary questions to proceed to the next round")
@@ -274,6 +287,7 @@ this.displayQuestion()
 @Component({
   selector: 'timeout-dialog-round-four',
   templateUrl: 'timeout-dialog-round-four.html',
+  styleUrls: ['./round-four.component.css']
 })
 export class TimeoutDialogRoundFour {
   constructor(public router: Router, @Inject(MAT_DIALOG_DATA) public data:{errorType:string, errorDescription:string}){
@@ -286,6 +300,7 @@ export class TimeoutDialogRoundFour {
 @Component({
   selector: 'victory-dialog',
   templateUrl: 'victory-dialog.html',
+  styleUrls: ['./congratulations.css']
 })
 export class VictoryDialog {
   constructor(public router: Router, @Inject(MAT_DIALOG_DATA) public data:{name:string, score:number, position:number}){
@@ -300,6 +315,7 @@ export class VictoryDialog {
 @Component({
   selector: 'bottom-sheet-round-four',
   templateUrl: 'bottom-sheet-round-four.html',
+  styleUrls: ['./round-four.component.css']
 })
 export class BottomSheetRoundFour {
   constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetRoundFour>,@Inject(MAT_BOTTOM_SHEET_DATA) public data: {question: string,answer:string}) {}

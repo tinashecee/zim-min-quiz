@@ -32,58 +32,77 @@ export class RoundThreeComponent implements OnInit {
   questionNumber = 0
 
 
-  questions = [{Question: "What is a mineral",
-  Answers: ["A precious stone", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "What is the most expensive Mineral",
-  Answers: ["Mineral is a precious fossil", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "How many minerals exist in Zim",
-  Answers: ["Mineral is a precious fossil", "A cool rock","45",
-  "A rock used for rituals"]},
-  {Question: "Who is the largest supplier of Gold",
-  Answers: ["Mineral is a precious fossil", "A cool rock","A beautiful rock",
-  "Zimbabwe"]},
-   {Question: "What is Zimbabwe's biggest mineral export",
-  Answers: ["Mineral is a precious fossil", "Gold","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "What is mineral is most dangerous",
-  Answers: ["Uranium", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "How many mining towns are in Zimbabwe",
-  Answers: ["Mineral is a precious fossil", "A cool rock","14",
-  "A rock used for rituals"]},
-  {Question: "What is the Mining regulator in Zimbabwe",
-  Answers: ["Mineral is a precious fossil", "A cool rock","Zim Minerals",
-  "A rock used for rituals"]},
-  {Question: "What is the great dyke",
-  Answers: ["A belt rich in mining deposits", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "Which mineral is used to make batteries",
-  Answers: ["Lithium", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
+  questions = [
+    {    Question: "Which mineral is most commonly found in Hwange?",    Answers: ["Gold", "Platinum", "Diamonds", "Coal"]
+},
+{
+  Question: "Which of these minerals is NOT popular in Zimbabwe?",
+  Answers: ["Copper", "Iron ore", "Bauxite", "Chrome"]
+},
+{
+  Question: "Which mineral is Zimbabwe's largest foreign currency earner?",
+  Answers: ["Platinum", "Coal", "Diamonds", "Nickel"]
+},
+{
+  Question: "Which mineral is commonly found in the Marange diamond fields?",
+  Answers: ["Emeralds", "Sapphires", "Rubies", "Diamonds"]
+},
+{
+  Question: "Which of the listed is not a PGM producer?",
+  Answers: ["Mimosa", "Bikita Minerals", "Zimplats", "UNKI"]
+},
+{
+  Question: "Which of these minerals is commonly used in the production of EV batteries?",
+  Answers: ["Coal", "Diamonds", "Granite", "Lithium"]
+},
+{
+  Question: "Which mineral is not used to produce stainless steel?",
+  Answers: ["Copper", "Iron", "Sand", "Nickel"]
+},
+{
+  Question: "Which mineral is used in the production of fertilizers?",
+  Answers: ["Potassium", "Phosphorus", "Nitrogen", "All of the above"]
+},
+{
+  Question: "Which of these minerals is NOT used in the production of cement?",
+  Answers: ["Gypsum", "Limestone", "Clay", "Copper"]
+},
+{
+  Question: "What mineral is used in the production of gasoline?",
+  Answers: ["Uranium", "Coal", "Petroleum", "Lithium"]
+},
+
   ]
 
-  answers = [{Question: "What is a mineral",
-  Answer: "A precious stone"} ,
-  {Question: "How many minerals exist in Zim",
-  Answer: "45"},
-  {Question: "What is the most expensive Mineral",
-  Answer: "Platinum"},
-  {Question: "Who is the largest supplier of Gold",
-  Answer: "Zimbabwe"},
-  {Question: "What is Zimbabwe's biggest mineral export",
-  Answer: "Gold"},
-  {Question: "What is mineral is most dangerous",
-  Answer: "Uranium"},
-  {Question: "How many mining towns are in Zimbabwe",
-  Answer: "14"},
-  {Question: "What is the Mining regulator in Zimbabwe",
-  Answer: "Zim Minerals"},
-  {Question: "What is the great dyke",
-  Answer: "A belt rich in mining deposits"},
-  {Question: "Which mineral is used to make batteries",
-  Answer: "Lithium"}
+  answers = [{    Question: "Which mineral is most commonly found in Hwange?",  Answer: "Coal"
+},
+{
+  Question: "Which of these minerals is NOT popular in Zimbabwe?",  Answer: "Bauxite"
+},
+{
+  Question: "Which mineral is Zimbabwe's largest foreign currency earner?",  Answer: "Platinum"
+},
+{
+  Question: "Which mineral is commonly found in the Marange diamond fields?",  Answer: "Diamonds"
+},
+{
+  Question: "Which of the listed is not a PGM producer?",  Answer: "Bikita Minerals"
+},
+{
+  Question: "Which of these minerals is commonly used in the production of EV batteries?",  Answer: "Lithium"
+},
+{
+  Question: "Which mineral is not used to produce stainless steel?",  Answer: "Sand"
+},
+{
+  Question: "Which mineral is used in the production of fertilizers?",  Answer: "All of the above"
+},
+{
+  Question: "Which of these minerals is NOT used in the production of cement?",  Answer: "Copper"
+},
+{
+  Question: "What mineral is used in the production of gasoline?",},
+
   ]
   ranNums :number[] = []
   count =0;
@@ -116,7 +135,7 @@ export class RoundThreeComponent implements OnInit {
   }
   playErrorAudio(){
 
-    this.incorrectAudio.src = "../../assets/wrong-answer-126515.mp3";
+    this.incorrectAudio.src = "../../assets/wrong-Answer-126515.mp3";
     this.incorrectAudio.load();
     this.incorrectAudio.play();
   }
@@ -171,8 +190,9 @@ this.displayQuestion()
       this.display = `${this.textSec}`;
 
       if (this.seconds == 0) {
+        this.stopAudio()
         this.playErrorAudio()
-        this.timeoutDialog("Your time has run out!","You failed to answer your question in 60 seconds, therefore you are disqualified")
+        this.timeoutDialog("Your time has run out!","You failed to Answer your question in 60 seconds, therefore you are disqualified")
         clearInterval(this.timer);
       }
     }, 1000);
@@ -180,7 +200,7 @@ this.displayQuestion()
  stopTimer(){
    this.seconds=0
  }
- response(question: any,answer: any){
+ response(question: any,Answer: any){
 
   //clearInterval(this.timer);
   if(this.wrongAnswer<5){
@@ -188,7 +208,7 @@ this.displayQuestion()
   this.displayQuestion()
   this.answers.forEach(e=>{
     if(e.Question == question){
-      if(e.Answer==answer){
+      if(e.Answer==Answer){
        this.correctAnswer+=1
        this.playCorrectAudio()
       }
@@ -196,14 +216,15 @@ this.displayQuestion()
         this.playErrorAudio()
         this.wrongAnswer+=1
         this._bottomSheet.open(BottomSheetRoundThree, {
-          data: { question: e.Question,answer: e.Answer},});
+          data: { question: e.Question,Answer: e.Answer},});
       }
     }
   })
 }else{
+  this.stopAudio()
   this.playErrorAudio()
   clearInterval(this.timer);
-  this.timeoutDialog("You have Failed to Qualify for the next round","You have failed to answer the necessary questions to proceed to the next round")
+  this.timeoutDialog("You have Failed to Qualify for the next round","You have failed to Answer the necessary questions to proceed to the next round")
 
 }
 
@@ -223,6 +244,7 @@ this.displayQuestion()
 @Component({
   selector: 'timeout-dialog-round-three',
   templateUrl: 'timeout-dialog-round-three.html',
+  styleUrls: ['./round-three.component.css']
 })
 export class TimeoutDialogRoundThree {
   constructor(public router: Router, @Inject(MAT_DIALOG_DATA) public data:{errorType:string, errorDescription:string}){
@@ -237,9 +259,10 @@ export class TimeoutDialogRoundThree {
 @Component({
   selector: 'bottom-sheet-round-three',
   templateUrl: 'bottom-sheet-round-three.html',
+  styleUrls: ['./round-three.component.css']
 })
 export class BottomSheetRoundThree {
-  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetRoundThree>,@Inject(MAT_BOTTOM_SHEET_DATA) public data: {question: string,answer:string}) {}
+  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetRoundThree>,@Inject(MAT_BOTTOM_SHEET_DATA) public data: {question: string,Answer:string}) {}
 
   openLink(event: MouseEvent): void {
     this._bottomSheetRef.dismiss();

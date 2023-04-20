@@ -31,58 +31,58 @@ export class RoundOneComponent implements OnInit {
   questionNumber = 0
 
 
-  questions = [{Question: "What is a mineral",
-  Answers: ["A precious stone", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "What is the most expensive Mineral",
-  Answers: ["Mineral is a precious fossil", "Platinum","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "How many minerals exist in Zim",
-  Answers: ["Mineral is a precious fossil", "A cool rock","45",
-  "A rock used for rituals"]},
-  {Question: "Who is the largest supplier of Gold",
-  Answers: ["Mineral is a precious fossil", "A cool rock","A beautiful rock",
-  "Zimbabwe"]},
-   {Question: "What is Zimbabwe's biggest mineral export",
-  Answers: ["Mineral is a precious fossil", "Gold","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "What is mineral is most dangerous",
-  Answers: ["Uranium", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "How many mining towns are in Zimbabwe",
-  Answers: ["Mineral is a precious fossil", "A cool rock","14",
-  "A rock used for rituals"]},
-  {Question: "What is the Mining regulator in Zimbabwe",
-  Answers: ["Mineral is a precious fossil", "A cool rock","Zim Minerals",
-  "A rock used for rituals"]},
-  {Question: "What is the great dyke",
-  Answers: ["A belt rich in mining deposits", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
-  {Question: "Which mineral is used to make batteries",
-  Answers: ["Lithium", "A cool rock","A beautiful rock",
-  "A rock used for rituals"]},
+  questions = [{Question: "What does MMCZ stand for?",
+  Answers: ["Minerals Management and Coordination of Zimbabwe", "Mining and Minerals Corporation of Zimbabwe","Minerals Marketing Corporation of Zimbabwe",
+  "Mining and Minerals Control of Zimbabwe"]},
+  {Question: "In which year was MMCZ established?",
+  Answers: ["1980", "1982","2000",
+  "2010"]},
+  {Question: "MMCZ began operations on ?",
+  Answers: ["1 January 1982", "7 March 1983","1/4/1999",
+  "31/12/2000"]},
+  {Question: "MMCZ is celebrating its …… anniversary",
+  Answers: ["20", "38","40",
+  "41"]},
+   {Question: "What is the role of MMCZ?",
+  Answers: ["To collect taxes", "To market and sell minerals produced in Zimbabwe","Enviromental inspection",
+  "To mine minerals in Zimbabwe"]},
+  {Question: "MMCZ offers the following services except",
+  Answers: ["Monitoring mineral exports", "Negotiating gold contracts","Monitoring mineral exports",
+  "Mineral evaluation"]},
+  {Question: "Which of the following documents are required from the producers when you want to export minerals through MMCZ ",
+  Answers: ["Mining claim Licence", "Quality Certificates/Assay certificates","Company profile/ Zimra tax clearance",
+  "All of the above"]},
+  {Question: "Who is the current General Manager for MMCZ?",
+  Answers: ["Mark Rule", "Liz Chitiga","O M Moyo",
+  "Tongai Matthew Muzenda"]},
+  {Question: "Which of the following minerals is not marketed by MMCZ?",
+  Answers: ["Gold", "Platinum","Copper",
+  "Diamond"]},
+  {Question: "Which country is the biggest buyer of Zimbabwean chrome ore?",
+  Answers: [" Japan", "India","South Africa",
+  "China"]},
   ]
 
-  answers = [{Question: "What is a mineral",
-  Answer: "A precious stone"} ,
-  {Question: "How many minerals exist in Zim",
-  Answer: "45"},
-  {Question: "What is the most expensive Mineral",
-  Answer: "Platinum"},
-  {Question: "Who is the largest supplier of Gold",
-  Answer: "Zimbabwe"},
-  {Question: "What is Zimbabwe's biggest mineral export",
+  answers = [{Question: "What does MMCZ stand for?",
+  Answer: "Minerals Marketing Corporation of Zimbabwe"} ,
+  {Question: "In which year was MMCZ established?",
+  Answer: "1982"},
+  {Question: "MMCZ began operations on ?",
+  Answer: "7 March 1983"},
+  {Question: "MMCZ is celebrating its …… anniversary",
+  Answer: "40"},
+  {Question: "What is the role of MMCZ?",
+  Answer: "To market and sell minerals produced in Zimbabwe"},
+  {Question: "MMCZ offers the following services except",
+  Answer: "Negotiating gold contracts"},
+  {Question: "Which of the following documents are required from the producers when you want to export minerals through MMCZ",
+  Answer: "All of the above"},
+  {Question: "Who is the current General Manager for MMCZ?",
+  Answer: "Tongai Matthew Muzenda"},
+  {Question: "Which of the following minerals is not marketed by MMCZ?",
   Answer: "Gold"},
-  {Question: "What is mineral is most dangerous",
-  Answer: "Uranium"},
-  {Question: "How many mining towns are in Zimbabwe",
-  Answer: "14"},
-  {Question: "What is the Mining regulator in Zimbabwe",
-  Answer: "Zim Minerals"},
-  {Question: "What is the great dyke",
-  Answer: "A belt rich in mining deposits"},
-  {Question: "Which mineral is used to make batteries",
-  Answer: "Lithium"}
+  {Question: "Which country is the biggest buyer of Zimbabwean chrome ore?",
+  Answer: "China"}
   ]
   ranNums :number[] = []
   count =0;
@@ -170,6 +170,7 @@ this.displayQuestion()
       this.display = `${this.textSec}`;
 
       if (this.seconds == 0) {
+        this.stopAudio()
         this.playErrorAudio()
         this.timeoutDialog("Your time has run out!","You failed to answer your question in 90 seconds, therefore you are disqualified")
         clearInterval(this.timer);
@@ -192,6 +193,7 @@ this.displayQuestion()
        this.playCorrectAudio()
       }
       else{
+
         this.playErrorAudio()
         this.wrongAnswer+=1
         this._bottomSheet.open(BottomSheetRoundOne, {
@@ -200,6 +202,7 @@ this.displayQuestion()
     }
   })
 }else{
+  this.stopAudio()
   this.playErrorAudio()
   clearInterval(this.timer);
    this.timeoutDialog("You have Failed to Qualify for the next round","You have failed to answer the necessary questions to proceed to the next round")

@@ -62,6 +62,10 @@ button {
 
 
 .example-card {
+  margin-top:auto;
+  margin-bottom: auto;
+  padding-top: auto;
+  padding-bottom: auto;
   max-width: 800px;
   color: black;
   background-color: rgba(255, 255, 255, 0.2);
