@@ -54,25 +54,24 @@ export class RoundFourComponent implements OnInit {
       Question: "What mineral is used in the production of tombstones?",
       Answers: ["Asbestos", "Calcium silicate", "Vermiculite", "Granite"]
     },{
-      Question: "Which of these minerals is commonly used in the production of EV batteries?",
-      Answers: ["Coal", "Diamonds", "Granite", "Lithium"]
+      Question: "Which two minerals are classified as precious stone trade act?",
+      Answers: ["Coal and Feldspar", "Emarald and Diamond", "Granite and Quartz", "Lithium and Gold"]
     },
     {
-      Question: "Which mineral is not used to produce stainless steel?",
-      Answers: ["Copper", "Iron", "Sand", "Nickel"]
+      Question: "How many elements are in the Platinum minerals group?",
+      Answers: ["10", "12", "2", "8"]
     },
     {
-      Question: "Which mineral is used in the production of fertilizers?",
-      Answers: ["Potassium", "Phosphorus", "Nitrogen", "All of the above"]
+      Question: "In which geological feature do you find Platinum?",
+      Answers: ["River", "The Great Dyke", "The Grand Canyon", "All of the above"]
     },
     {
-      Question: "Which of these minerals is NOT used in the production of cement?",
-      Answers: ["Gypsum", "Limestone", "Clay", "Copper"]
+      Question: "Which of the following the following is NOT the by-product of Coal?",
+      Answers: ["Coke", "Tar", "Methane Gas", "Limestone"]
     },
-    {
-      Question: "What mineral is used in the production of gasoline?",
-      Answers: ["Uranium", "Coal", "Petroleum", "Lithium"]
-    }
+    {Question: "Which country is the biggest buyer of Zimbabwean chrome ore?",
+    Answers: [" Japan", "India","South Africa",
+    "China"]}
   ]
 
   answers = [
@@ -92,19 +91,19 @@ export class RoundFourComponent implements OnInit {
       Question: "What mineral is used in the production of tombstones?",  Answer: "Granite"
     },
     {
-      Question: "Which of these minerals is commonly used in the production of EV batteries?",  Answer: "Lithium"
+      Question: "Which two minerals are classified as precious stone trade act?",  Answer: "Emarald and Diamond"
     },
     {
-      Question: "Which mineral is not used to produce stainless steel?",  Answer: "Sand"
+      Question: "How many elements are in the Platinum minerals group?",  Answer: "10"
     },
     {
-      Question: "Which mineral is used in the production of fertilizers?",  Answer: "All of the above"
+      Question: "In which geological feature do you find Platinum?",  Answer: "The Great Dyke"
     },
     {
-      Question: "Which of these minerals is NOT used in the production of cement?",  Answer: "Copper"
+      Question: "Which of the following the following is not the by-product of Coal?",  Answer: "Limestone"
     },
-    {
-      Question: "What mineral is used in the production of gasoline?", Answer:"Petroleum"},
+    {Question: "Which country is the biggest buyer of Zimbabwean chrome ore?",
+    Answer: "China"}
 
   ]
   ranNums :number[] = []
@@ -128,25 +127,25 @@ export class RoundFourComponent implements OnInit {
 
   playAudio(){
 
-    this.audio.src = "../../assets/clock-ticking-60-second-countdown-118231.mp3";
+    this.audio.src = "assets/clock-ticking-60-second-countdown-118231.mp3";
     this.audio.load();
     this.audio.play();
   }
   playCorrectAudio(){
 
-    this.correctAudio.src = "../../assets/correct-6033.mp3";
+    this.correctAudio.src = "assets/correct-6033.mp3";
     this.correctAudio.load();
     this.correctAudio.play();
   }
   playErrorAudio(){
 
-    this.incorrectAudio.src = "../../assets/wrong-answer-126515.mp3";
+    this.incorrectAudio.src = "assets/wrong-answer-126515.mp3";
     this.incorrectAudio.load();
     this.incorrectAudio.play();
   }
   playVictoryAudio(){
 
-    this.victoryAudio.src = "../../assets/success-fanfare-trumpets-6185.mp3";
+    this.victoryAudio.src = "assets/success-fanfare-trumpets-6185.mp3";
     this.victoryAudio.load();
     this.victoryAudio.play();
   }

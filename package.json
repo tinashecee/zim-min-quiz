@@ -1,13 +1,27 @@
 {
   "name": "zim-min-quiz",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "electron": "ng build --base-href ./ && electron .",
     "test": "ng test"
   },
+  "build": {
+    "extraResources": [
+        {
+            "from": "./src/assets/",
+            "to": "assets"
+        }
+    ],
+
+    "asar": false
+
+
+},
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.0.0",
@@ -36,6 +50,7 @@
     "@angular/compiler-cli": "^14.0.0",
     "@types/d3": "^7.4.0",
     "@types/jasmine": "~4.0.0",
+    "electron": "^24.1.2",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",

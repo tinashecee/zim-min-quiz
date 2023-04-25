@@ -123,19 +123,19 @@ export class RoundThreeComponent implements OnInit {
   }
   playAudio(){
 
-    this.audio.src = "../../assets/clock-ticking-60-second-countdown-118231.mp3";
+    this.audio.src = "assets/clock-ticking-60-second-countdown-118231.mp3";
     this.audio.load();
     this.audio.play();
   }
   playCorrectAudio(){
 
-    this.correctAudio.src = "../../assets/correct-6033.mp3";
+    this.correctAudio.src = "assets/correct-6033.mp3";
     this.correctAudio.load();
     this.correctAudio.play();
   }
   playErrorAudio(){
 
-    this.incorrectAudio.src = "../../assets/wrong-answer-126515.mp3";
+    this.incorrectAudio.src = "assets/wrong-answer-126515.mp3";
     this.incorrectAudio.load();
     this.incorrectAudio.play();
   }

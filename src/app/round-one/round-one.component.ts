@@ -58,9 +58,9 @@ export class RoundOneComponent implements OnInit {
   {Question: "Which of the following minerals is not marketed by MMCZ?",
   Answers: ["Gold", "Platinum","Copper",
   "Diamond"]},
-  {Question: "Which country is the biggest buyer of Zimbabwean chrome ore?",
-  Answers: [" Japan", "India","South Africa",
-  "China"]},
+  {Question: "How many functions does the MMCZ have?",
+  Answers: ["3", "5","6",
+  "1"]},
   ]
 
   answers = [{Question: "What does MMCZ stand for?",
@@ -81,8 +81,8 @@ export class RoundOneComponent implements OnInit {
   Answer: "Tongai Matthew Muzenda"},
   {Question: "Which of the following minerals is not marketed by MMCZ?",
   Answer: "Gold"},
-  {Question: "Which country is the biggest buyer of Zimbabwean chrome ore?",
-  Answer: "China"}
+  {Question: "How many functions does the MMCZ have?",
+  Answer: "6"}
   ]
   ranNums :number[] = []
   count =0;
@@ -103,19 +103,19 @@ export class RoundOneComponent implements OnInit {
   }
   playAudio(){
 
-    this.audio.src = "../../assets/clock-ticking-60-second-countdown-118231.mp3";
+    this.audio.src = "assets/clock-ticking-60-second-countdown-118231.mp3";
     this.audio.load();
     this.audio.play();
   }
   playCorrectAudio(){
 
-    this.correctAudio.src = "../../assets/correct-6033.mp3";
+    this.correctAudio.src = "assets/correct-6033.mp3";
     this.correctAudio.load();
     this.correctAudio.play();
   }
   playErrorAudio(){
 
-    this.incorrectAudio.src = "../../assets/wrong-answer-126515.mp3";
+    this.incorrectAudio.src = "assets/wrong-answer-126515.mp3";
     this.incorrectAudio.load();
     this.incorrectAudio.play();
   }

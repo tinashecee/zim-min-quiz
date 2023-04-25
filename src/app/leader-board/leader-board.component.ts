@@ -22,7 +22,7 @@ export class LeaderBoardComponent implements OnInit {
   }
   playAudio(){
     let audio = new Audio();
-    audio.src = "../../assets/clock-ticking-60-second-countdown-118231.mp3";
+    audio.src = "assets/clock-ticking-60-second-countdown-118231.mp3";
     audio.load();
     audio.play();
 

@@ -38,7 +38,7 @@ export class RoundTwoComponent implements OnInit {
   {Question: "Africa's largest integrated steel plant is anticipated to start operations in?",
   Answers: ["Manhize, Mvuma", "Zvishavane","Hwange",
   "Harare"]},
-  {Question: "What is the name of the biggest intented steel plant?",
+  {Question: "What is the name of the biggest steel plant?",
   Answers: ["Hwange Colliery", "UNKI","Dinson Iron & Steel (Manhize)",
   "Aurex"]},
   {Question: "Which mineral is a semiprecious gemstones?",
@@ -68,7 +68,7 @@ export class RoundTwoComponent implements OnInit {
   Answer: "Granite"} ,
   {Question: "Africa's largest integrated steel plant is anticipated to start operations in?",
   Answer: "Manhize, Mvuma"},
-  {Question: "What is the name of the biggest intented steel plant?",
+  {Question: "What is the name of the biggest steel plant?",
   Answer: "UNKI"},
   {Question: "Which mineral is a semiprecious gemstones?",
   Answer: "All of the above"},
@@ -104,19 +104,19 @@ export class RoundTwoComponent implements OnInit {
   }
   playAudio(){
 
-    this.audio.src = "../../assets/clock-ticking-60-second-countdown-118231.mp3";
+    this.audio.src = "assets/clock-ticking-60-second-countdown-118231.mp3";
     this.audio.load();
     this.audio.play();
   }
   playCorrectAudio(){
 
-    this.correctAudio.src = "../../assets/correct-6033.mp3";
+    this.correctAudio.src = "assets/correct-6033.mp3";
     this.correctAudio.load();
     this.correctAudio.play();
   }
   playErrorAudio(){
 
-    this.incorrectAudio.src = "../../assets/wrong-answer-126515.mp3";
+    this.incorrectAudio.src = "assets/wrong-answer-126515.mp3";
     this.incorrectAudio.load();
     this.incorrectAudio.play();
   }
