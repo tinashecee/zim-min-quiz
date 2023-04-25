@@ -33,6 +33,7 @@ border: 2px solid gold;width:60px;">
 
   <br/>
   <ng-container *ngIf="isVisible$ | async" >
+    <div class="centered">
     <mat-card class="example-card">
       <mat-card-header>
         <mat-card-title style="text-align: center;"><h1 >{{questions[questionNumber].Question}}?</h1></mat-card-title>
@@ -79,6 +80,6 @@ border: 2px solid gold;width:60px;">
       <mat-card-actions>
       </mat-card-actions>
     </mat-card>
-
+  </div>
 </ng-container>
 </div>

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomepageComponent, UserDetailsDialog } from './homepage/homepage.component';
+import { HomepageComponent, UserDetailsDialog, VideoDialog } from './homepage/homepage.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
@@ -47,7 +46,8 @@ import {MatSelectModule} from '@angular/material/select';
     LeaderBoardComponent,
     SplashScreenComponent,
     UserDetailsDialog,
-    VictoryDialog
+    VictoryDialog,
+    VideoDialog
 
   ],
 

@@ -26,7 +26,7 @@ export class RoundTwoComponent implements OnInit {
   display: any;
   seconds: number = 0;
   textSec: any = "0";
-  statSec: number = 90;
+  statSec: number = 50;
 
   isVisible$ = new BehaviorSubject(false)
   questionNumber = 0
@@ -54,14 +54,14 @@ export class RoundTwoComponent implements OnInit {
   Answers: ["Graphite", "Hematite","Magnetite",
   "Pyrite"]},
   {Question: "Which of these minerals is commonly used in the production of electrical wires and cables?",
-  Answers: ["Copper", "Aluminum","Silver",
+  Answers: ["Copper", "Zinc","Silver",
   "All of the above"]},
   {Question: "What mineral is used to make optical lenses?",
   Answers: ["Quartz", "Beryl","Fluorite",
   "Halite"]},
   {Question: "Which mineral is used to produce cutting tools?",
   Answers: ["Cobalt", "Tungsten","Titanium",
-  "A rock used for rituals"]},
+  "Vanadium"]},
   ]
 
   answers = [{Question: "Which mineral is commonly found in Mutoko?",
@@ -79,7 +79,7 @@ export class RoundTwoComponent implements OnInit {
   {Question: "Which mineral is commonly used in the production of pencils?",
   Answer: "Graphite"},
   {Question: "Which of these minerals is commonly used in the production of electrical wires and cables?",
-  Answer: "All of the above"},
+  Answer: "Copper"},
   {Question: "What mineral is used to make optical lenses?",
   Answer: "Fluorite"},
   {Question: "Which mineral is used to produce cutting tools?",
@@ -138,7 +138,7 @@ this.displayQuestion()
 
   displayQuestion(){
     this.isVisible$.next(false);
-    if(this.count<10){
+    if(this.count<5){
     this.questionNumber = this.ranNums[this.count]
     this.count+=1
     this.isVisible$.next(true);
@@ -153,26 +153,64 @@ this.displayQuestion()
   expression = 'blue'
   timerr(minute:any) {
     // let minute = 1;
-    this.seconds = minute * 90;
+    this.seconds = minute * 50;
 
     const prefix = minute < 10 ? "0" : "";
 
       this.timer = setInterval(() => {
       this.seconds--;
       if (this.statSec != 0) this.statSec--;
-      else this.statSec = 89;
+      else this.statSec = 49;
 
       if (this.statSec < 10) {
         this.expression = 'red';
         this.textSec = this.statSec;
       } else this.textSec = this.statSec;
-      this.value1=(91-this.seconds)/91*100
+      this.value1=(51-this.seconds)/51*100
       this.display = `${this.textSec}`;
 
       if (this.seconds == 0) {
+        let firstRound = 0
+  let secondRound = 0
+  let thirdRound = 0
+  let fourRound = 0
+  let total = 0
+  this.quizService.scoreRoundFour.next(this.correctAnswer)
+  this.quizService.scoreOne.subscribe(a=>{
+    firstRound = a
+    this.quizService.scoreTwo.subscribe(b=>{
+      secondRound = b
+      this.quizService.scoreThree.subscribe(c=>{
+        thirdRound = c
+        this.quizService.scoreFour.subscribe(d=>{
+          fourRound = d
+          total=firstRound+secondRound+thirdRound+fourRound
+          let usersArray:any = JSON.parse(this.quizService.getData("users")+"") ;
+          let currentUser=this.quizService.getData("currentUser")
+          let currentUserAge=this.quizService.getData("currentUser_age")
+          let currentUserGender=this.quizService.getData("currentUser_gender")
+          let count = 0
+          let position = 1
+          usersArray.forEach((e: any)=>{
+              if(e.name == currentUser){
+                usersArray[count]={name:currentUser,score:total,age:currentUserAge,gender:currentUserGender}
+              }
+              count+=1
+          })
+          this.quizService.saveData("users", JSON.stringify(usersArray))
+          usersArray.forEach((e: any)=>{
+            if(e.score > total){
+              position+=1
+            }
+        })
+        })
+
+      })
+    })
+  })
         this.stopAudio()
         this.playErrorAudio()
-        this.timeoutDialog("Your time has run out!","You failed to answer your question in 60 seconds, therefore you are disqualified")
+        this.timeoutDialog("Your time has run out!","You failed to answer your question in 100 seconds, therefore you are disqualified")
         clearInterval(this.timer);
       }
     }, 1000);
@@ -183,17 +221,25 @@ this.displayQuestion()
  response(question: any,answer: any){
 
   //clearInterval(this.timer);
-  if(this.wrongAnswer<5){
-  this.value= (this.count+1)/10*100;
+  if(this.wrongAnswer<3){
+  this.value= (this.count+1)/5*100;
   this.displayQuestion()
   this.answers.forEach(e=>{
     if(e.Question == question){
       if(e.Answer==answer){
        this.correctAnswer+=1
        this.playCorrectAudio()
+       let correctAnswers:any = JSON.parse(this.quizService.getData("correct_answers")+"") ;
+
+       correctAnswers.push({question:question,age:this.quizService.getData("currentUser_age")+"",gender:this.quizService.getData("currentUser_gender")+"" })
+       this.quizService.saveData("correct_answers", JSON.stringify(correctAnswers))
       }
       else{
         this.playErrorAudio()
+        let correctAnswers:any = JSON.parse(this.quizService.getData("incorrect_answers")+"") ;
+
+        correctAnswers.push({question:question,age:this.quizService.getData("currentUser_age")+"",gender:this.quizService.getData("currentUser_gender")+"" })
+        this.quizService.saveData("incorrect_answers", JSON.stringify(correctAnswers))
         this.wrongAnswer+=1
         this._bottomSheet.open(BottomSheetRoundTwo, {
           data: { question: e.Question,answer: e.Answer},});
@@ -201,6 +247,44 @@ this.displayQuestion()
     }
   })
 }else{
+  let firstRound = 0
+  let secondRound = 0
+  let thirdRound = 0
+  let fourRound = 0
+  let total = 0
+  this.quizService.scoreRoundFour.next(this.correctAnswer)
+  this.quizService.scoreOne.subscribe(a=>{
+    firstRound = a
+    this.quizService.scoreTwo.subscribe(b=>{
+      secondRound = b
+      this.quizService.scoreThree.subscribe(c=>{
+        thirdRound = c
+        this.quizService.scoreFour.subscribe(d=>{
+          fourRound = d
+          total=firstRound+secondRound+thirdRound+fourRound
+          let usersArray:any = JSON.parse(this.quizService.getData("users")+"") ;
+          let currentUser=this.quizService.getData("currentUser")
+          let currentUserAge=this.quizService.getData("currentUser_age")
+          let currentUserGender=this.quizService.getData("currentUser_gender")
+          let count = 0
+          let position = 1
+          usersArray.forEach((e: any)=>{
+              if(e.name == currentUser){
+                usersArray[count]={name:currentUser,score:total,age:currentUserAge,gender:currentUserGender}
+              }
+              count+=1
+          })
+          this.quizService.saveData("users", JSON.stringify(usersArray))
+          usersArray.forEach((e: any)=>{
+            if(e.score > total){
+              position+=1
+            }
+        })
+        })
+
+      })
+    })
+  })
   this.stopAudio()
   this.playErrorAudio()
   clearInterval(this.timer);

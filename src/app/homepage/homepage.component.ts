@@ -24,7 +24,9 @@ export class HomepageComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(UserDetailsDialog);
   }
-
+  openDialog1() {
+    const dialogRef = this.dialog.open(VideoDialog);
+  }
 
 }
 
@@ -65,6 +67,8 @@ export class UserDetailsDialog {
         this.quizService.saveData("users", JSON.stringify(usersArray))
         const dialogRef = this.dialog.open(QuizStartDialog);
         this.quizService.saveData("currentUser",this.userName)
+        this.quizService.saveData("currentUser_age",this.age)
+        this.quizService.saveData("currentUser_gender",this.gender)
 
      }
     }else{
@@ -82,3 +86,8 @@ function onBtnDown(this: HTMLElement, ev: MouseEvent) {
   throw new Error('Function not implemented.');
 }
 
+@Component({
+  selector: 'video-dialog',
+  templateUrl: 'video-dialog.html',
+})
+export class VideoDialog {}

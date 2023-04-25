@@ -3,9 +3,18 @@ margin: 0;
 display: flex;
 justify-content: center;">
   <ul class="menu-bar">
-    <li>Watch Video</li>
+    <li (click)="openDialog1()">Watch Video</li>
     <li (click)="openDialog()">Play</li>
     <li routerLink="/leader-board">Leaderboard</li>
   </ul>
+  <div style="z-index: 4;position: absolute;top: 50%;left:50%;color: #ffffff;
+  background-color: rgb(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;"><img src="../../assets/logo.png"></div>
 </div>
 

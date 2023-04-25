@@ -28,6 +28,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if(this.quizService.getData("users") == null){
       this.quizService.saveData("users", JSON.stringify([]))
+      this.quizService.saveData("correct_answers", JSON.stringify([]))
+      this.quizService.saveData("incorrect_answers", JSON.stringify([]))
       console.log("null")
     }
   }

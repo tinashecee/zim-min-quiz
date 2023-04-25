@@ -64,11 +64,12 @@
           <article class="leaderboard__profile" *ngFor="let elem of usersArray;let i = index">
             <img src="../../assets/top.png" alt="Mark Zuckerberg" class="leaderboard__picture">
             <span class="leaderboard__name">{{elem.name}}</span>
-            <span class="leaderboard__value">{{elem.score/40*100}}<span>%</span></span>
+            <span class="leaderboard__value">{{elem.score}}/20</span>
           </article>
 
         </main>
       </article>
+      <button (click)="exportData()">Export data as CSV</button>
 
       <mat-divider></mat-divider>
     </mat-card-content>
